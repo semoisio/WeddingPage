@@ -17,8 +17,17 @@ router.route('/Spostit')
 router.route('/Allergiat')
     .get(ctrl.fetchAllergies);
 
-router.route('/AddQuests')
+router.route('/Vieraat')
     .post(ctrl.AddQuest);
+
+router.route('/Aikuiset')
+    .get(ctrl.fetchAdults);
+
+router.route('/Lapset')
+    .get(ctrl.fetChildren);
+
+router.route('/Kirjautuminen')
+    .get(ctrl.fetchPassword);
 
 //publish functions outside of this js-file
 module.exports = router;

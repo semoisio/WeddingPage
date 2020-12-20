@@ -14,7 +14,41 @@ module.exports = {
     getAllQuests: () => {
 
         return new Promise((resolve, reject) => {
-            let query = "select idvieraat,Etunimi, Sukunimi,sposti,allergiat from ilmoittautuneet;";
+            let query = "select idvieraat,Etunimi, Sukunimi,sposti,allergiat,aikuinen from ilmoittautuneet;";
+
+            connection.query(query, function (error, result, fields) {
+
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        })
+    },
+    // This return all children
+    getChildren: () => {
+
+        return new Promise((resolve, reject) => {
+            let query = "select idvieraat,Etunimi, Sukunimi,sposti,allergiat,aikuinen from ilmoittautuneet where aikuinen = 0;";
+
+            connection.query(query, function (error, result, fields) {
+
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        })
+    },
+    // This return all children
+    getAdults: () => {
+
+        return new Promise((resolve, reject) => {
+            let query = "select idvieraat,Etunimi, Sukunimi,sposti,allergiat,aikuinen from ilmoittautuneet where aikuinen = 1;";
 
             connection.query(query, function (error, result, fields) {
 
@@ -58,17 +92,30 @@ module.exports = {
         })
     },
     //This fucntion add one quest to db.
-    addQuest: (etunimi,sukunimi,sposti,allergiat) => {
+    addQuest: (etunimi,sukunimi,sposti,allergiat,aikuinen) => {
         return new Promise((resolve , reject) =>{
-            let query = "INSERT INTO `ilmoittautuneet` (`Etunimi`,`Sukunimi`,`sposti`,`allergiat`) VALUES (?, ?,?,?);";
+            let query = "INSERT INTO `ilmoittautuneet` (`Etunimi`,`Sukunimi`,`sposti`,`allergiat`,`aikuinen`) VALUES (?, ?,?,?,?);";
 
-            connection.query(query,[etunimi,sukunimi,sposti,allergiat], function(error, result, fields){
+            connection.query(query,[etunimi,sukunimi,sposti,allergiat,aikuinen], function(error, result, fields){
                 if(error){
-                    console.log("virhe:", error);
                     reject(error);
                 }
                 else{
-                    console.log("Onnistu");
+                    resolve(result);
+                }
+            })
+        })
+    },
+    //This fucntion add one quest to db.
+    getPassword: (user) => {
+        return new Promise((resolve , reject) =>{
+            let query = "select salasana from kirjautuminen where kayttajatunnus = ?;";
+
+            connection.query(query,[user], function(error, result, fields){
+                if(error){
+                    reject(error);
+                }
+                else{
                     resolve(result);
                 }
             })

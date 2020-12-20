@@ -10,3 +10,10 @@ select distinct sposti from ilmoittautuneet;
 select allergiat from ilmoittautuneet;
 
 select * from ilmoittautuneet;
+select * from kirjautuminen;
+
+delete from ilmoittautuneet where idvieraat = 15;
+
+select * from ilmoittautuneet where aikuinen = 0;
+
+select salasana from kirjautuminen where kayttajatunnus = 'Moisiot2022';

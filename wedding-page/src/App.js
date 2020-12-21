@@ -3,8 +3,8 @@ import Navigation from './components/navbar';
 import Home from './components/Home';
 import Info from './components/Info'
 import SignUp from './components/SignUp'
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link, NavLink, Switch, Route, BrowserRouter as Router, useHistory, withRouter, Redirect, useLocation } from 'react-router-dom'
+import { Container } from 'react-bootstrap';
+import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (

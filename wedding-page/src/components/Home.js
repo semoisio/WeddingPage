@@ -9,17 +9,17 @@ function Home() {
     return (
         <Container className="homePaaDiv" fluid>
             <Row className="pt-2">
-                <Col md={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
+                <Col md={{ span: 6, offset: 4 }} xs={{ span: 6, offset: 3 }}>
                     <h6 className="homeOtsikko">Severi & Susanna</h6>
                 </Col>
             </Row>
             <Row >
-                <Col md={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
+                <Col md={{ span: 4, offset: 5 }} xs={{ span: 6, offset: 3 }}>
                     <h6 className="homeAlateksti pb-1">22.01.2022</h6>
                 </Col>
             </Row> 
             <Row className="p-4">
-                <Col  md={{ span: 5, offset: 3 }} xs={{ span: 6, offset: 3 }}>
+                <Col  md={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
                     <Image src={susaseve5} fluid rounded/>
                 </Col> 
             </Row>

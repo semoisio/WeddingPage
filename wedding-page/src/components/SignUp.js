@@ -21,7 +21,7 @@ function SignUp() {
                     <h6>Tähän kohti ohjeet kirjautumiseen</h6>
                 </Col>
             </Row>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className="col-md-5">
                 <Form.Group className="pr-2">
                     <Form.Label>Etunimi</Form.Label>
                     <Form.Control required type="text" placeholder="Etunimesi" />

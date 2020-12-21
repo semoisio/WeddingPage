@@ -1,0 +1,47 @@
+.homePaaDiv{
+    background-image: url("../images/wintern1.jpg");
+}
+.homeOtsikko{
+    font-size: 5em;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+}
+.homeAlateksti{
+    font-size: 5em;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+}
+@media screen and (max-width: 1050px) {
+    .homeOtsikko {
+      font-size: 4em;
+    }
+    .homeAlateksti{
+        font-size: 4em;
+    }
+    
+  }
+  @media screen and (max-width: 858px) {
+    .homeOtsikko {
+      font-size: 3em;
+    }
+    .homeAlateksti{
+        font-size: 3em;
+    }
+    
+  }
+  @media screen and (max-width: 670px) {
+    .homeOtsikko {
+      font-size: 2em;
+    }
+    .homeAlateksti{
+        font-size: 2em;
+    }
+    
+  }
+  @media screen and (max-width: 480px) {
+    .homeOtsikko {
+      font-size: 1em;
+    }
+    .homeAlateksti{
+        font-size: 1em;
+    }
+    
+  }

@@ -13,7 +13,8 @@ function Navigation() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <NavLink style={{paddingRight: '1em' , color: 'white' }} to="/">Etusivu</NavLink>
-                        <NavLink style={{ color: 'white' }} to="/SignUp">Ilmoittautuminen</NavLink>
+                        <NavLink style={{paddingRight: '1em' , color: 'white' }} to="/SignUp">Ilmoittautuminen</NavLink>
+                        <NavLink style={{ color: 'white' }} to="/Info">Info</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

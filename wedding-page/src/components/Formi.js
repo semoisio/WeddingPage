@@ -88,7 +88,7 @@ function Formi() {
                         <option>Lapsi</option>
                     </Form.Control>
                 </Form.Group>
-                <Button type="submit">Ilmoittaudu</Button>
+                <Button variant="success" type="submit">Lisää</Button>
             </Form>
             <QuestTable  data={data} />
         </Row>

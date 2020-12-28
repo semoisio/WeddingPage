@@ -1,5 +1,5 @@
 # WeddingPage
-This is web application for my own wedding.
+This is webapplication for my own wedding.
 
 Includes:
 1. Database: MySQL

@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import './SignUp.css';
 import React, { useState, useContext } from 'react';
 import Formi from './Formi';
+import Introduction from './SingUpIntroductions';
 
 export const DataContext = React.createContext({});
 
@@ -16,7 +17,7 @@ function SignUp() {
             <Container className="signUpPaaDiv p-3" fluid>
                 <Row>
                     <Col>
-                        <h6>Tähän kohti ohjeet kirjautumiseen</h6>
+                        <Introduction/>
                     </Col>
                 </Row>
                 {

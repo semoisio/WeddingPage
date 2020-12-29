@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Table } from 'react-bootstrap';
-import { DataContext } from './SignUp';
+import { Table, Button,Container } from 'react-bootstrap';
 import React, { useContext, useState } from 'react';
 
 function QuestTable(props) {
@@ -15,12 +14,16 @@ function QuestTable(props) {
             <td key={index + 0.3}>{t.sposti}</td>
             <td key={index + 0.4}>{t.allergiat}</td>
             <td key={index + 0.5}>{t.aikuinen}</td>
-            <td key={index + 0.6}><button>Muuta</button></td>
+            <td key={index + 0.6}><button onClick={() => muutaArvoja(t, index)}>Muuta</button></td>
         </tr>
     });
 
+    const muutaArvoja = (t, i) => {
+        props.palautus(t.etunimi, t.sukunimi, t.sposti, t.allergiat,t.aikuinen);
+        props.data.splice(i, 1); // delete quest from array 
+    };
     return (
-        <div className="col-md-6">
+        <Container className="col-md-6 p-0">
             <Table striped bordered hover variant="light" >
                 <thead>
                     <tr>
@@ -36,7 +39,11 @@ function QuestTable(props) {
                     {sisalto}
                 </tbody>
             </Table>
-        </div>
+        {
+            props.data.length == 0 ?
+            null : <Button variant="success" className="col-md-2">Testi</Button>
+        }
+        </Container>
     );
 }
 

@@ -15,6 +15,7 @@ function Formi() {
     const [allergies, setAllergies] = useState("");
     const [aikuinen, setAikuinen] = useState("Aikuinen");
     const [data, setData] = useState([]);
+   
     //This is datacontext where i restore all of the quests
     const [quests, setQuests] = useContext(DataContext);
 
@@ -41,9 +42,8 @@ function Formi() {
     const clear = () => {
         setFirstname("");
         setLastname("");
-        setEmail("");
+        //setEmail("");
         setAllergies("");
-        setAikuinen("Aikuinen");
     }
     // This fuction saves all the values to datacontext
     const handleSubmit = (event) => {
@@ -62,19 +62,31 @@ function Formi() {
         }
 
     };
+
+    const returnValues = (etu, taka, spo, all, aik) => {
+        setFirstname(etu);
+        setLastname(taka);
+        setEmail(spo);
+        setAllergies(all);
+        setAikuinen(aik);
+
+        
+    }
+
     return (
         <Row>
             <Form onSubmit={handleSubmit} className="col-md-5">
+                <Form.Group><p>Pakollinen*</p></Form.Group>
                 <Form.Group className="pr-2">
-                    <Form.Label>Etunimi</Form.Label>
+                    <Form.Label>Etunimi *</Form.Label>
                     <Form.Control required type="text" placeholder="Etunimi" value={firstname} onChange={(evt) => firstnameChanged(evt)} />
                 </Form.Group>
                 <Form.Group className="pr-2">
-                    <Form.Label>Sukunimi</Form.Label>
+                    <Form.Label>Sukunimi *</Form.Label>
                     <Form.Control required type="text" placeholder="Sukunimi" value={lastname} onChange={(evt) => lastnameChanged(evt)} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Sähköposti</Form.Label>
+                    <Form.Label>Sähköposti *</Form.Label>
                     <Form.Control required type="email" placeholder="example@email.fi" value={email} onChange={(evt) => emailChanged(evt)} />
                 </Form.Group>
                 <Form.Group>
@@ -83,14 +95,14 @@ function Formi() {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Valitse toinen</Form.Label>
-                    <Form.Control as="select" onChange={(evt) => aikuinenChanged(evt)}>
-                        <option>Aikuinen</option>
-                        <option>Lapsi</option>
+                    <Form.Control value={aikuinen} as="select" onChange={(evt) => aikuinenChanged(evt)}>
+                        <option value="Aikuinen">Aikuinen</option>
+                        <option value="Lapsi">Lapsi</option>
                     </Form.Control>
                 </Form.Group>
-                <Button variant="success" type="submit">Lisää</Button>
+                <Button variant="success" className="col-md-2" type="submit">Lisää</Button>
             </Form>
-            <QuestTable  data={data} />
+            <QuestTable  data={data} palautus={returnValues} />
         </Row>
     );
 }

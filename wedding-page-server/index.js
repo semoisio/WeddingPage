@@ -1,10 +1,12 @@
+/* This is the starting point of my server */ 
+
 var express = require('express'); //loaded
 var app = express();
 var bodyParser = require('body-parser'); //loaded
 
 app.use(bodyParser.json());
 
-var port = 3000;
+var port = 3000; 
 var hostname = "127.0.0.1";
 
 var cors = function (req, res, next)

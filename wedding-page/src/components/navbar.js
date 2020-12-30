@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import {NavLink} from 'react-router-dom'
 
 
 
 function Navigation() {
     return (
-        <div>
+        <Container fluid className="p-0">
             <Navbar bg="dark" variant="dark" expand="sm">
-                <Navbar.Brand href="">Moisiot2022</Navbar.Brand>
+                <Navbar.Brand href="" className="pr-5">Moisiot2022</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -18,7 +18,7 @@ function Navigation() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-        </div>
+        </Container>
     );
 }
 

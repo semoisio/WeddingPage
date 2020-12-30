@@ -11,22 +11,28 @@ export const DataContext = React.createContext({});
 function SignUp() {
     const [quests, setQuests] = useState([]);
     const [started, setStarted] = useState(false);
+    const [done, setDone] = useState(false);
 
     return (
         <DataContext.Provider value={[quests, setQuests]}>
             <Container className="signUpPaaDiv p-3" fluid>
                 <Row>
-                    <Col>
-                        <Introduction/>
+                    <Col md={{ span: 12, offset: 0 }}>
+                        <Introduction />
                     </Col>
                 </Row>
+                {
+                    done ?
+                    <Col md={{ span: 6, offset: 3 }}><h1 className="p-3" >Kiitos ilmoittautumisesta!</h1></Col> : null
+                }
                 {
                     started?
                     null: <Button variant="success" onClick={() => setStarted(!started)}>Aloita ilmoittautuminen</Button>
                 }
+                
                 {
                     started ?
-                    <Formi/> : null
+                    <Formi className="Formi" loppu={setStarted} kiitos={setDone}/> : null
                 }
             </Container>
         </DataContext.Provider>

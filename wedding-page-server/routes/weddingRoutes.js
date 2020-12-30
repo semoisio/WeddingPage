@@ -1,3 +1,5 @@
+/* This file includes all the routes what I'm using */
+ 
 var express = require('express');
 //var app = express();
 var router = express.Router();

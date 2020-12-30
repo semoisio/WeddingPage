@@ -7,7 +7,7 @@ import QuestTable from './QuestTable';
 
 
 
-function Formi() {
+function Formi(props) {
     // useState for form
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
@@ -54,7 +54,7 @@ function Formi() {
         }
         else {
             let t = quests;
-            t.push({ etunimi: firstname, sukunimi: lastname, sposti: email, allergiat: allergies, aikuinen: aikuinen });
+            t.push({ Etunimi: firstname, Sukunimi: lastname, sposti: email, allergiat: allergies, aikuinen: aikuinen });
             setData(t);
             setQuests(t);
             clear();
@@ -102,7 +102,7 @@ function Formi() {
                 </Form.Group>
                 <Button variant="success" className="col-md-2" type="submit">Lisää</Button>
             </Form>
-            <QuestTable  data={data} palautus={returnValues} />
+            <QuestTable  data={data} palautus={returnValues} loppu={props.loppu} kiitos={props.kiitos} />
         </Row>
     );
 }

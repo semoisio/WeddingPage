@@ -1,9 +1,11 @@
+/* This file includes all the database connections */ 
+
 const { query } = require('express');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',      // this only in testing
+    user: 'root',      // this only for testing
     password: '',
     database: 'moisiot2022'
 });

@@ -1,3 +1,4 @@
+/* This file includes logic what my server uses */ 
 
 const sql = require('../db/weddingSQL');
 

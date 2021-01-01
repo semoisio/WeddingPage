@@ -1,6 +1,8 @@
 /* This file includes logic what my server uses */ 
-
 const sql = require('../db/weddingSQL');
+
+
+
 
 module.exports = {
 
@@ -60,16 +62,27 @@ module.exports = {
         }
     },
     fetchPassword: async (req, res) => { 
-        if (req.query.user == undefined || req.query.user == ""){
+        if (req.query.user == undefined || req.query.user == "" || req.query.password === "" || req.query.password == undefined ){
             res.statusCode = 400;
-            res.send({ status: "NOT OK", error_msg: "Käyttäjänimeä ei ole määritelty"});
+            res.send({ status: "NOT OK", error_msg: "Käyttäjänimi tai salasana puuttui"});
             return;
         }
         try {
             console.log(req.query.user)
-            let c = await sql.getPassword(req.query.user);
+            let c = await sql.getPassword(req.query.user, req.query.password);
+            
+            console.log("C:" , c)
 
-            res.json({ status: "OK", data : c});
+            if(c.length === 1){
+                req.session.user = c[0].kayttajatunnus;
+                console.log("Sessio: " ,req.session.user);
+                res.json({ status: "OK", data : "Kirjautuminen ok"});
+            }else{
+                res.statusCode = 400;
+                res.send({ status: "NOT OK", error_msg: "Käyttäjänimi tai salasana väärin"});
+            }
+
+            
         }
         catch (err) {
             console.log(err);

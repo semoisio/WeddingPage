@@ -108,16 +108,17 @@ module.exports = {
             })
         })
     },
-    //This fucntion add one quest to db.
-    getPassword: (user) => {
+    //This fucntion fetch matching user and password from database
+    getPassword: (user, password) => {
         return new Promise((resolve , reject) =>{
-            let query = "select salasana from kirjautuminen where kayttajatunnus = ?;";
+            let query = "select kayttajatunnus, salasana from kirjautuminen where kayttajatunnus = ? and salasana = ?;";
 
-            connection.query(query,[user], function(error, result, fields){
+            connection.query(query,[user,password], function(error, result, fields){
                 if(error){
                     reject(error);
                 }
                 else{
+                    console.log(result);
                     resolve(result);
                 }
             })

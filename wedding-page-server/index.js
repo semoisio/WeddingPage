@@ -3,6 +3,20 @@
 var express = require('express'); //loaded
 var app = express();
 var bodyParser = require('body-parser'); //loaded
+var session = require('express-session');
+/** Use of session 
+ *
+ * I use session for user authentication.
+ * 
+ */ 
+app.set('trust proxy', 1);
+
+app.use(session({
+    secret: 'tosisalainen arvo', 
+    resave: false,
+    saveUninitialized: true,
+    name : 'JK_session_id'
+  }))
 
 app.use(bodyParser.json());
 

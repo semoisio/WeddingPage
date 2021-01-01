@@ -28,6 +28,10 @@ function QuestTable(props) {
         setDoPost(doPost+1);
     };
 
+    /**
+     * Param: Array
+     * Function clears array what given in param 
+     */
     const clearArray = (a) => {
         while (a.length) {
             a.pop();
@@ -35,7 +39,7 @@ function QuestTable(props) {
     };
     
     useEffect( () => {
-        const lisaaAuto = async (i) => {
+        const lisaaVieras = async (i) => {
             console.log("lISÄYS ALKAA");
             const data = taulu[i]; // data what I'm using
             const url = "http://127.0.0.1:3000/Vieraat"; // REst API url
@@ -55,7 +59,7 @@ function QuestTable(props) {
         if ( doPost > 0 ){ // first page load we dont do post
             muunnaSyote();
             for(i = 0; i < taulu.length; i++){ // loop through all the data in array
-                lisaaAuto(i)
+                lisaaVieras(i)
             }
             // clear all arrays what I use 
             clearArray(taulu);

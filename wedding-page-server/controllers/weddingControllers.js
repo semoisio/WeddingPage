@@ -76,7 +76,7 @@ module.exports = {
             if(c.length === 1){
                 req.session.user = c[0].kayttajatunnus;
                 console.log("Sessio: " ,req.session.user);
-                res.json({ status: "OK", data : "Kirjautuminen ok"});
+                res.send({ status: "OK", data : "Kirjautuminen ok"});
             }else{
                 res.statusCode = 400;
                 res.send({ status: "NOT OK", error_msg: "Käyttäjänimi tai salasana väärin"});

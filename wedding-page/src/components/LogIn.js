@@ -3,9 +3,10 @@ import { Form, Button, Image, Container, Row } from 'react-bootstrap';
 import './Home.css';
 import { useHistory } from 'react-router-dom'
 import React, { useState, useContext, useEffect } from 'react';
+import './Control.css';
 
 
-function LogIn() {
+function LogIn(props) {
     const [kayttaja, setKayttaja] = useState('');
     const [salasana, setSalasana] = useState('');
     let h = useHistory();
@@ -27,44 +28,44 @@ function LogIn() {
     };
 
     useEffect( () => {
-        const lisaaAuto = async (i) => {
-            console.log("lISÄYS ALKAA");
-            const url = "http://127.0.0.1:3000/Vieraat"; // REst API url
+        const checkLogIn = async (i) => {
+            console.log("Kirjautuminen alkaa");
+            const url = "http://127.0.0.1:3000/Kirjautuminen?user="+kayttaja+"&password="+salasana; // REst API url
     
-            const response = await fetch(url, {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data) // body data type must match "Content-Type" header
-            });
-    
-            console.log("response:", response);
-            console.log("response:", await response.json());
+            const response = await fetch(url);
+            let vastaus = await response.json();
+            console.log(vastaus.session);
+
+            if(vastaus.status === "OK"){
+                if (props.onLogin != null) {
+                    props.onLogin(kayttaja);
+                    h.push("/Control");
+                }
+            }
         }
 
-        if ( doPost > 0 ){ // first page load we dont do post
-            muunnaSyote();
-            for(i = 0; i < taulu.length; i++){ // loop through all the data in array
-                lisaaAuto(i)
-            }
-            // clear all arrays what I use 
-            clearArray(taulu);
-            clearArray(props.data);
-            props.loppu(false);
-            props.kiitos(true);
+        if ( doCheck > 0 ){ // first page load we dont do post
+            checkLogIn();
         } 
     }, [doCheck])
 
+    const kayttajaChanged = (event) => {
+        setKayttaja(event.target.value);
+    }
+
+    const salasanaChanged = (event) => {
+        setSalasana(event.target.value);
+    }
+
     return (
-        <Form onSubmit={handleSubmit} className="col-md-4 p-3">
+        <Form onSubmit={handleSubmit} className="col-md-4 p-3 controlPaaDiv">
             <Form.Group>
                 <Form.Label>Käyttäjätunnus</Form.Label>
-                <Form.Control required type="text" placeholder="Käyttäjätunnus" value={kayttaja} />
+                <Form.Control required type="text" placeholder="Käyttäjätunnus" value={kayttaja} onChange={(evt) => kayttajaChanged(evt)} />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Salasana</Form.Label>
-                <Form.Control required type="password" placeholder="Salasana" value={salasana}/>
+                <Form.Control required type="password" placeholder="Salasana" value={salasana} onChange={(evt) => salasanaChanged(evt)}/>
             </Form.Group>
             <Button variant="primary" type="submit">Kirjaudu</Button>
         </Form>

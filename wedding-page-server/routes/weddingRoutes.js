@@ -20,7 +20,7 @@ router.route('/Kirjautuminen')
     .get(ctrl.fetchPassword);
 
 // this route returns all the people who have registered to wedding
-router.get('/Ilmoittautuneet', auth.autUser,ctrl.fetchAll);
+router.get('/Ilmoittautuneet',ctrl.fetchAll);
 
 // this route returns all the different emails what are in the database
 router.get('/Spostit', auth.autUser,ctrl.fetchEmails);

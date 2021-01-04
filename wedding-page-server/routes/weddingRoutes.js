@@ -2,10 +2,8 @@
 var express = require('express');
 
 var router = express.Router();
-var app = express();
 const ctrl = require('../controllers/weddingControllers');
 const auth = require('../authentication/auth');
-const { Router } = require('express');
 
 
 
@@ -23,19 +21,19 @@ router.route('/Kirjautuminen')
 router.get('/Ilmoittautuneet',ctrl.fetchAll);
 
 // this route returns all the different emails what are in the database
-router.get('/Spostit', auth.autUser,ctrl.fetchEmails);
+router.get('/Spostit',ctrl.fetchEmails);
 
 // this route returns all the allergies of the quests
 router.route('/Allergiat')
-    .get(auth.autUser, ctrl.fetchAllergies);
+    .get( ctrl.fetchAllergies);
 
 // this route returns all the adults from database
 router.route('/Aikuiset')
-    .get(auth.autUser,ctrl.fetchAdults);
+    .get(ctrl.fetchAdults);
 
 // this route returns all the children from database
 router.route('/Lapset')
-    .get(auth.autUser,ctrl.fetChildren);
+    .get(ctrl.fetChildren);
 
 
 

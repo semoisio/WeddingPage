@@ -9,13 +9,16 @@ var session = require('express-session');
  * I use session for user authentication.
  * 
  */ 
-app.set('trust proxy', 1);
+//app.set('trust proxy', 1);
 
 app.use(session({
     secret: 'tosisalainen arvo', 
     resave: false,
     saveUninitialized: true,
-    name : 'JK_session_id'
+    name : 'JK_session_id',
+    cookie: {
+        maxAge: 1000*60*60*24
+    }
   }))
 
 app.use(bodyParser.json());

@@ -74,8 +74,10 @@ module.exports = {
             console.log("C:" , c)
 
             if(c.length === 1){
+                console.log("Sessio: " ,req.session);
                 req.session.user = c[0].kayttajatunnus;
                 console.log("Sessio: " ,req.session.user);
+                console.log("Sessio: " ,req.session);
                 res.send({ status: "OK", data : "Kirjautuminen ok"});
             }else{
                 res.statusCode = 400;

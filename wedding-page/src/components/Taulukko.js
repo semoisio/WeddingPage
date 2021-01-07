@@ -8,7 +8,7 @@ import React, { useState, useContext } from 'react';
 function Taulukko(props) {
 
     return (
-        <Table striped bordered hover variant="light" >
+        <Table  striped bordered hover variant="light" >
                 <thead>
                    {props.otsikko}
                 </thead>

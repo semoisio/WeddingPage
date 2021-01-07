@@ -9,7 +9,8 @@ module.exports = {
     fetchAll: async (req, res) => { 
         try {
             let c = await sql.getAllQuests();
-
+            console.log(c);
+            console.log(c.length);
             res.json({ status: "OK", data : c});
         }
         catch (err) {

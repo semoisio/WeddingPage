@@ -21,22 +21,22 @@ function LogIn(props) {
             event.stopPropagation();
         }
         else {
-            setDoCheck(doCheck+1);
+            setDoCheck(doCheck + 1);
             event.preventDefault();
         }
 
     };
 
-    useEffect( () => {
+    useEffect(() => {
         const checkLogIn = async (i) => {
             console.log("Kirjautuminen alkaa");
-            const url = "http://127.0.0.1:3000/Kirjautuminen?user="+kayttaja+"&password="+salasana; // REst API url
-    
+            const url = "http://127.0.0.1:3000/Kirjautuminen?user=" + kayttaja + "&password=" + salasana; // REst API url
+
             const response = await fetch(url);
             let vastaus = await response.json();
             console.log(vastaus.session);
 
-            if(vastaus.status === "OK"){
+            if (vastaus.status === "OK") {
                 if (props.onLogin != null) {
                     props.onLogin(kayttaja);
                     h.push("/Control");
@@ -44,9 +44,9 @@ function LogIn(props) {
             }
         }
 
-        if ( doCheck > 0 ){ // first page load we dont do post
+        if (doCheck > 0) { // first page load we dont do post
             checkLogIn();
-        } 
+        }
     }, [doCheck])
 
     const kayttajaChanged = (event) => {
@@ -58,17 +58,19 @@ function LogIn(props) {
     }
 
     return (
-        <Form onSubmit={handleSubmit} className="col-md-4 p-3 controlPaaDiv">
-            <Form.Group>
-                <Form.Label>Käyttäjätunnus</Form.Label>
-                <Form.Control required type="text" placeholder="Käyttäjätunnus" value={kayttaja} onChange={(evt) => kayttajaChanged(evt)} />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Salasana</Form.Label>
-                <Form.Control required type="password" placeholder="Salasana" value={salasana} onChange={(evt) => salasanaChanged(evt)}/>
-            </Form.Group>
-            <Button variant="primary" type="submit">Kirjaudu</Button>
-        </Form>
+        <div className=" controlPaaDiv">
+            <Form onSubmit={handleSubmit} className="logIn p-4">
+                <Form.Group>
+                    <Form.Label>Käyttäjätunnus</Form.Label>
+                    <Form.Control required type="text" placeholder="Käyttäjätunnus" value={kayttaja} onChange={(evt) => kayttajaChanged(evt)} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Salasana</Form.Label>
+                    <Form.Control required type="password" placeholder="Salasana" value={salasana} onChange={(evt) => salasanaChanged(evt)} />
+                </Form.Group>
+                <Button variant="primary" type="submit">Kirjaudu</Button>
+            </Form>
+        </div >
     );
 }
 

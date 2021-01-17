@@ -1,4 +1,5 @@
-const sql = require('./weddingSQL');
-test('testi', () =>{
-    expect(sql.getAllQuests.length).toBe(21);
+const {getAllQuests} = require("./weddingSQL");
+
+test("Testaa hakeeka sql kaikki vieraat", () =>{
+    expect(getAllQuests()).toBe(21);
 })

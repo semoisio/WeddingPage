@@ -9,7 +9,7 @@ function Kortti(props) {
         height: '15rem'
     }
     return (
-        <Card bg="info" className="col-md-3 m-1">
+        <Card bg="info" className="col-md-3 m-4">
             <Card.Body>
                 <Card.Title>{props.otsikko}</Card.Title>
                 <Card.Img style={kuvakoko} src={props.img} alt={props.selite} />

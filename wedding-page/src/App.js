@@ -21,7 +21,7 @@ function App() {
   const loginDone = (loggedUser) => { setUser(loggedUser); }
   
   return (
-    <Container className="p-0" fluid>
+    <Container className="p-0 paa" fluid>
       <Router> 
         <Navigation />
         <Switch>

@@ -1,3 +1,14 @@
 .controlPaaDiv{
     background-image: url("../images/wintern1.jpg");
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logIn{
+    background-color: whitesmoke;
+    opacity: 90%;
+    width: 30%;
+    border-radius: 10%;
 }

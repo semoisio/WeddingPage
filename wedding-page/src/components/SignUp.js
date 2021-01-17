@@ -12,10 +12,16 @@ function SignUp() {
     const [quests, setQuests] = useState([]);
     const [started, setStarted] = useState(false);
     const [done, setDone] = useState(false);
+    const [korkeusTausta, setKorkeusTausta] = useState("100vh")
+
+    const aloitaIlmoittautuminen = () => {
+        setStarted(!started);
+        setKorkeusTausta("100%");
+    }
 
     return (
         <DataContext.Provider value={[quests, setQuests]}>
-            <Container className="signUpPaaDiv p-3" fluid>
+            <Container className="signUpPaaDiv p-3" style={{height: korkeusTausta}} fluid>
                 <Row>
                     <Col md={{ span: 12, offset: 0 }}>
                         <Introduction />
@@ -27,7 +33,7 @@ function SignUp() {
                 }
                 {
                     started?
-                    null: <Button variant="success" onClick={() => setStarted(!started)}>Aloita ilmoittautuminen</Button>
+                    null: <Button variant="success" onClick={() => aloitaIlmoittautuminen()}>Aloita ilmoittautuminen</Button>
                 }
                 
                 {

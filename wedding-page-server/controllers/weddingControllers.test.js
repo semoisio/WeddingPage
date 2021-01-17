@@ -1,5 +1,5 @@
-const ctrl = require('./weddingControllers');
+const {fetchAll} = require("./weddingControllers");
 
 test("Testi", () => {
-    //expect(ctrl.fetchAll).toBe(21);
+    expect(fetchAll().length()).toBe(21);
 })
